@@ -17,8 +17,8 @@ jobs:
       versionSpec: '3.x'
       addToPath: true
   - script: |
-      pip install -r requirements.txt
-      python main.py
+      pip install -r /config_generator/requirements.txt
+      python /config_generator/main.py
 
 
  
