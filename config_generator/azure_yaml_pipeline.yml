@@ -1,1 +1,32 @@
+trigger:
+  branches:
+    exclude:
+    - '*'
+  paths:
+    include:
+    - 'config_generator/heartbeat_config_INPUT_template.xlsx'
 
+jobs:
+- job: RunPythonScript
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
+  - checkout: self  # Add a checkout step to get the latest code
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '3.x'
+      addToPath: true
+  - script: |
+      pip install -r requirements.txt
+      python main_run02.py
+
+
+ 
+  - task: CopyFiles@2
+    inputs:
+      targetFolder: '$(Build.ArtifactStagingDirectory)'
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      ArtifactName: 'drop02'
+      publishLocation: 'Container'
