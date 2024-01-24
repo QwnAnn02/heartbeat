@@ -7,7 +7,7 @@ import os
 
 def main():
     # Read Excel data into a Pandas DataFrame
-    input_excel = 'heartbeat_config_INPUT_template.xlsx'  
+    input_excel = 'config_generator\heartbeat_config_INPUT_template.xlsx'  
     # Check if the input file exists
     check_input_file_existence(input_excel)
     df = pd.read_excel(input_excel, engine='openpyxl', index_col=None)
