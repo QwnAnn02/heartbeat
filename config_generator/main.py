@@ -7,7 +7,7 @@ import os
 
 def main():
     # Read Excel data into a Pandas DataFrame
-    input_excel = 'config_generator\heartbeat_config_INPUT_template.xlsx'  
+    input_excel = 'config_generator/heartbeat_config_INPUT_template.xlsx' 
     # Check if the input file exists
     check_input_file_existence(input_excel)
     df = pd.read_excel(input_excel, engine='openpyxl', index_col=None)
@@ -58,7 +58,7 @@ def main():
     master_df.to_excel(master_excel_file, index=False, engine='openpyxl')
 
     # Delete the input Excel file
-    os.remove(input_excel)
+    #os.remove(input_excel)
     
 
 
